@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1>Creación de Cuenta</h1>
+    {{ form_start(form, { 'attr': { 'class': 'well' }}) }}
+        <div class="form-group">
+          {{form_row(form.apellido, {'attr': { 'class': 'form-control', 'placeholder': 'Apellido' }})}}
+          {{form_row(form.nombre, {'attr': { 'class': 'form-control', 'placeholder': 'Nombre' }})}}
+          {{form_row(form.dni, {'attr': { 'class': 'form-control', 'placeholder': 'D.N.I.' }})}}
+          {{form_row(form.mail, {'attr': { 'class': 'form-control', 'placeholder': 'Codigo de Cuenta' }})}}
+          {{form_row(form.tieneMail)}}
+          {{form_row(form.tipoCorreo, {'attr': { 'class': 'form-control', 'placeholder': 'Tipo de Correo' }})}}
+          {{form_row(form.jurisdiccion, {'attr': { 'placeholder': 'Jurisdicción' }})}}
+          {% if is_granted('ROLE_USER') %}
+              {{form_row(form.ticket, {'attr': { 'class': 'form-control', 'placeholder': 'Ticket' }})}}
+          {% endif %}
+
+          {{form_rest(form)}}
+          <input type="submit" value="Crear" />
+        </div>
+    {{ form_end(form) }}
+
+    <a class="btn btn-default" href="{{ path('cuenta_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span>Volver a la Lista</a>
+
+  </div>
+</div>
+{% endblock %}

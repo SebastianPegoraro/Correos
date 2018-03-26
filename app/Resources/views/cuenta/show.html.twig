@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <h1>Cuenta</h1>
+
+  <table class="table table-striped table-bordered">
+      <tbody>
+          <tr>
+              <th>Id</th>
+              <td>{{ cuentum.id }}</td>
+          </tr>
+          <tr>
+              <th>Apellido</th>
+              <td>{{ cuentum.apellido }}</td>
+          </tr>
+          <tr>
+              <th>Nombre</th>
+              <td>{{ cuentum.nombre }}</td>
+          </tr>
+          <tr>
+              <th>D.N.I.</th>
+              <td>{{ cuentum.dni }}</td>
+          </tr>
+          <tr>
+              <th>Codigo de Cuenta</th>
+              <td>{{ cuentum.mail }}</td>
+          </tr>
+          <tr>
+              <th>Tiene Mail</th>
+              <td>{{ cuentum.tieneMail }}</td>
+          </tr>
+          <tr>
+              <th>Tipo de Correo</th>
+              <td>{{ cuentum.tipoCorreo }}</td>
+          </tr>
+          <tr>
+              <th>Jurisdicción</th>
+              <td>{{ cuentum.jurisdiccion }}</td>
+          </tr>
+          {% if is_granted('ROLE_USER') %}
+              <tr>
+                  <th>Ticket</th>
+                  <td>{{ cuentum.ticket }}</td>
+              </tr>
+          {% endif %}
+
+      </tbody>
+  </table>
+
+  <ul class="list-inline ">
+      <li>
+          <a class="btn btn-default" href="{{ path('cuenta_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span> Volver a la Lista </a>
+      </li>
+      <li>
+          <a class="btn btn-default" href="{{ path('cuenta_edit', { 'id': cuentum.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar </a>
+      </li>
+      <li>
+          {{ form_start(delete_form) }}
+          {% if is_granted('ROLE_USER') %}
+            <button class="btn btn-danger" type="submit" id="delete-link">
+              <span class="glyphicon glyphicon-remove"></span> Eliminar
+            </button>
+          {% endif %}
+          {{ form_end(delete_form) }}
+      </li>
+  </ul>
+</div>
+
+{% endblock %}
+
+{% block page_javascripts %}
+    <script src="{{ asset('js/cuenta.js') }}"></script>
+{% endblock %}

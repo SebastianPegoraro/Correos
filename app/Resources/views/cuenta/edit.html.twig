@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1>Editar Cuenta</h1>
+    {{ form_start(edit_form, { 'attr': { 'class': 'well' }}) }}
+      <div class="form-group">
+        {{form_row(edit_form.apellido, {'attr': { 'class': 'form-control', 'placeholder': 'Apellido' }})}}
+        {{form_row(edit_form.nombre, {'attr': { 'class': 'form-control', 'placeholder': 'Nombre' }})}}
+        {{form_row(edit_form.dni, {'attr': { 'class': 'form-control', 'placeholder': 'D.N.I.' }})}}
+        {{form_row(edit_form.mail, {'attr': { 'class': 'form-control', 'placeholder': 'Codigo de Cuenta' }})}}
+        {{form_row(edit_form.tieneMail, {'attr': { 'class': 'form-control', 'placeholder': 'Tiene Mail?' }})}}
+        {{form_row(edit_form.tipoCorreo, {'attr': { 'class': 'form-control', 'placeholder': 'Tipo de Correo' }})}}
+        {{form_row(edit_form.jurisdiccion, {'attr': { 'class': 'form-control', 'placeholder': 'Jurisdicción' }})}}
+        {% if is_granted('ROLE_USER') %}
+            {{form_row(edit_form.ticket, {'attr': { 'class': 'form-control', 'placeholder': 'Ticket' }})}}
+        {% endif %}
+        
+        {{form_rest(edit_form)}}
+        <input type="submit" value="Editar"/>
+      </div>
+    {{ form_end(edit_form) }}
+
+    <ul class="list-inline">
+        <li>
+            <a class="btn btn-default" href="{{ path('cuenta_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span> Volver a la Lista</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+
+                <button class="btn btn-danger" type="submit" id="delete-link">
+                  <span class="glyphicon glyphicon-remove"></span> Eliminar
+                </button>
+
+
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
+{% block page_javascripts %}
+    <script src="{{ asset('js/cuenta.js') }}"></script>
+{% endblock %}

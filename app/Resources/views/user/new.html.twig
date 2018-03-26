@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1>Creación de Usuario</h1>
+    {{ form_start(form, { 'attr': { 'class': 'well' }}) }}
+    <div class="form-group">
+      {{ form_rest(form) }}
+      {{ form_row(form.enabled, {'attr': { 'class': 'form-control'}})}}
+
+      <input type="submit" value="Crear" />
+    </div>
+    {{ form_end(form) }}
+
+    <a class="btn btn-default" href="{{ path('user_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span>Volver a la Lista</a>
+
+  </div>
+</div>
+
+{% endblock %}

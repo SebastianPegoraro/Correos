@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1>Editar Usuario</h1>
+
+    {{ form_start(edit_form,{'attr': {'class': 'well'}}) }}
+      <div class="form-group">
+        {{form_row(edit_form.email, { 'attr': { 'class': 'form-control', 'placeholder': 'Email' }}) }}
+        {{form_row(edit_form.username, { 'attr': { 'class': 'form-control', 'placeholder': 'User' }}) }}
+        {# {{form_row(edit_form.password, { 'attr': { 'class': 'form-control' }}) }} #}
+        {{form_row(edit_form.plainPassword, { 'attr': { 'class': 'form-control' }}) }}
+      </div>
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Editar" />
+    {{ form_end(edit_form) }}
+
+    <ul class="list-inline">
+        <li>
+            <a class="btn btn-default" href="{{ path('user_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span> Volver a la Lista </a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+              <button class="btn btn-danger" type="submit" id="delete-link">
+                <span class="glyphicon glyphicon-remove"></span> Eliminar
+              </button>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+  </div>
+
+</div>
+
+{% endblock %}

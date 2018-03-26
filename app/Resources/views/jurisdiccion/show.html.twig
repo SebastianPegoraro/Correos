@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <h1>Jurisdicción</h1>
+
+  <table class="table table-striped table-bordered">
+      <tbody>
+          <tr>
+              <th>Id</th>
+              <td>{{ jurisdiccion.id }}</td>
+          </tr>
+          <tr>
+              <th>Name</th>
+              <td>{{ jurisdiccion.name }}</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <ul class="list-inline">
+      <li>
+          <a class="btn btn-default" href="{{ path('jurisdiccion_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span> Volver a la Lista </a>
+      </li>
+      <li>
+          <a class="btn btn-default" href="{{ path('jurisdiccion_edit', { 'id': jurisdiccion.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar </a>
+      </li>
+      <li>
+          {{ form_start(delete_form) }}
+            <button class="btn btn-danger" type="submit" id="delete-link">
+              <span class="glyphicon glyphicon-remove"></span> Eliminar
+            </button>
+          {{ form_end(delete_form) }}
+      </li>
+  </ul>
+
+</div>
+
+{% endblock %}
+{% block page_javascripts %}
+    <script src="{{ asset('js/cuenta.js') }}"></script>
+{% endblock %}

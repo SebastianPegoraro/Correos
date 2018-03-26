@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1>Creación de Jurisdicción</h1>
+
+    {{ form_start(form, { 'attr': { 'class': 'well' }}) }}
+      <div class="form-group">
+        {{form_row(form.name, {'attr': { 'class': 'form-control', 'placeholder': 'Nombre' }})}}
+        <input type="submit" value="Create" />
+      </div>
+
+    {{ form_end(form) }}
+    <a class="btn btn-default" href="{{ path('jurisdiccion_index') }}"><span class=" glyphicon glyphicon-chevron-left"></span> Volver a la Lista </a>
+
+  </div>
+
+</div>
+
+{% endblock %}
